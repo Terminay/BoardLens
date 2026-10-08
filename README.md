@@ -1,8 +1,8 @@
-# BoardLens
+<img src="assets/rigspec-kit-svg-logo-horizontal.svg" alt="rigspec" width="480">
 
 A local-first, cross-platform hardware inspection tool for Windows, macOS, and Linux.
 
-BoardLens 2.0 is a C# / .NET / Avalonia desktop application. The GUI and CLI share the same hardware service layer. Detection does not require Python, the network, or telemetry.
+rigspec 2.0 is a C# / .NET / Avalonia desktop application. The GUI and CLI share the same hardware service layer. Detection does not require Python, the network, or telemetry.
 
 The original Python/Tkinter app (`main.py`, v0.5.4) is still in the repository as a functional reference until the .NET release fully replaces it.
 
@@ -15,29 +15,29 @@ Operating system, CPU, memory, motherboard, BIOS, GPU, storage, network adapters
 Requires the .NET 10 SDK.
 
 ```bash
-dotnet build BoardLens.slnx
-dotnet test BoardLens.slnx
+dotnet build RigSpec.slnx
+dotnet test RigSpec.slnx
 ```
 
 GUI:
 
 ```bash
-dotnet run --project src/BoardLens.App
+dotnet run --project src/RigSpec.App
 ```
 
 CLI (same data as the GUI):
 
 ```bash
-dotnet run --project src/BoardLens.Cli
-dotnet run --project src/BoardLens.Cli -- --json
-dotnet run --project src/BoardLens.Cli -- --diagnostics
+dotnet run --project src/RigSpec.Cli
+dotnet run --project src/RigSpec.Cli -- --json
+dotnet run --project src/RigSpec.Cli -- --diagnostics
 ```
 
 Self-contained publish:
 
 ```bash
-dotnet publish src/BoardLens.App/BoardLens.App.csproj -c Release -r win-x64 --self-contained true
-dotnet publish src/BoardLens.Cli/BoardLens.Cli.csproj -c Release -r linux-x64 --self-contained true
+dotnet publish src/RigSpec.App/RigSpec.App.csproj -c Release -r win-x64 --self-contained true
+dotnet publish src/RigSpec.Cli/RigSpec.Cli.csproj -c Release -r linux-x64 --self-contained true
 ```
 
 ## Architecture
@@ -46,7 +46,7 @@ See [docs/ARCHITECTURE.md](docs/ARCHITECTURE.md).
 
 ## Privacy
 
-BoardLens runs entirely on the local machine. Hardware detection does not upload data and does not require a network connection.
+rigspec runs entirely on the local machine. Hardware detection does not upload data and does not require a network connection.
 
 ## License
 

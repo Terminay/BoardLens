@@ -7,7 +7,7 @@
     <TreatWarningsAsErrors>true</TreatWarningsAsErrors>
     <WarningsNotAsErrors>CA1416</WarningsNotAsErrors>
     <Version>2.0.0</Version>
-    <Authors>BoardLens</Authors>
-    <Product>BoardLens</Product>
+    <Authors>rigspec</Authors>
+    <Product>rigspec</Product>
   </PropertyGroup>
 </Project>

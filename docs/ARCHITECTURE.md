@@ -1,13 +1,13 @@
-# BoardLens 2.0 architecture
+# rigspec 2.0 architecture
 
-BoardLens is a local-first hardware inspection utility. The GUI and CLI share one OS-agnostic core. Platform code never lives in the UI.
+rigspec is a local-first hardware inspection utility. The GUI and CLI share one OS-agnostic core. Platform code never lives in the UI.
 
 ```
-BoardLens.App (Avalonia)     BoardLens.Cli
+RigSpec.App (Avalonia)     RigSpec.Cli
               \               /
-               BoardLens.Core
+               RigSpec.Core
                       |
-           BoardLens.Infrastructure
+           RigSpec.Infrastructure
                       |
      Windows / Linux / macOS providers
 ```
@@ -18,7 +18,7 @@ BoardLens.App (Avalonia)     BoardLens.Cli
 - **Infrastructure** — provider selection, JSON/text export. No WMI/`sysfs`/IOKit here.
 - **Platform.*** — Windows CIM/WMI, Linux procfs/sysfs (commands only as fallback), macOS `system_profiler`/`sysctl` where needed.
 - **App** — dense MVVM UI over `HardwareSnapshot`.
-- **Cli** — `boardlens`, `--json`, `--summary`, `--diagnostics`.
+- **Cli** — `rigspec`, `--json`, `--summary`, `--diagnostics`.
 
 ## Missing data
 

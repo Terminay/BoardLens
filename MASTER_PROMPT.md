@@ -1,13 +1,13 @@
-# BoardLens 2.0 — Master Engineering Prompt
+# rigspec 2.0 — Master Engineering Prompt
 
-You are rebuilding BoardLens from the existing repository into a serious, cross-platform hardware information utility.
+You are rebuilding rigspec from the existing repository into a serious, cross-platform hardware information utility.
 
 Repository:
 https://github.com/CodeAnd-Copper/BoardLens
 
 ## 0. Mission
 
-Turn the existing BoardLens fork from a small Python/Tkinter utility into a maintainable, technically rigorous desktop application for Windows, macOS, and Linux.
+Turn the existing rigspec fork from a small Python/Tkinter utility into a maintainable, technically rigorous desktop application for Windows, macOS, and Linux.
 
 The existing application is the **functional reference**, not the architectural reference.
 
@@ -92,30 +92,30 @@ The UI should not care whether the data came from WMI, sysfs, IOKit, system_prof
 Architecture:
 
 ```text
-BoardLens
+rigspec
 │
-├── BoardLens.App
+├── RigSpec.App
 │   ├── Views
 │   ├── ViewModels
 │   ├── Assets
 │   └── Styles
 │
-├── BoardLens.Core
+├── RigSpec.Core
 │   ├── Models
 │   ├── Interfaces
 │   ├── Services
 │   └── Exceptions
 │
-├── BoardLens.Infrastructure
+├── RigSpec.Infrastructure
 │   ├── Hardware
 │   ├── Platform
 │   └── Serialization
 │
-├── BoardLens.Platform.Windows
+├── RigSpec.Platform.Windows
 │
-├── BoardLens.Platform.Linux
+├── RigSpec.Platform.Linux
 │
-└── BoardLens.Platform.MacOS
+└── RigSpec.Platform.MacOS
 ```
 
 Keep the exact structure flexible if there is a better .NET architecture, but preserve the separation of concerns.
@@ -335,7 +335,7 @@ The main screen should make system information immediately scannable.
 Possible structure:
 
 ```text
-BoardLens
+rigspec
 ────────────────────────────────────────────
 
 Overview
@@ -520,10 +520,10 @@ Consider creating a CLI mode using the same core library.
 Example:
 
 ```text
-boardlens
-boardlens --json
-boardlens --summary
-boardlens --diagnostics
+rigspec
+rigspec --json
+rigspec --summary
+rigspec --diagnostics
 ```
 
 The GUI and CLI must use the same hardware service layer.
@@ -531,7 +531,7 @@ The GUI and CLI must use the same hardware service layer.
 Architecture:
 
 ```text
-                 BoardLens.Core
+                 RigSpec.Core
                  /            \
                 /              \
         Avalonia GUI           CLI
@@ -541,7 +541,7 @@ Architecture:
               Hardware Services
 ```
 
-This is desirable because BoardLens is fundamentally an information utility.
+This is desirable because rigspec is fundamentally an information utility.
 
 Do not prioritize the CLI over the GUI, but keep the core reusable.
 
@@ -570,7 +570,7 @@ Make diagnostic output useful for bug reports.
 
 # 17. Privacy
 
-BoardLens should be local-first.
+rigspec should be local-first.
 
 Hardware information should NOT be uploaded anywhere unless the user explicitly initiates an action that requires it.
 
@@ -616,7 +616,7 @@ Never construct shell commands using unsanitized user input.
 
 Do not request administrator/root privileges unless a specific feature genuinely requires them.
 
-BoardLens should normally operate as a regular user.
+rigspec should normally operate as a regular user.
 
 ---
 
@@ -646,7 +646,7 @@ Potentially:
 
 * `.deb`
 
-Do not make Linux users install Python just to run BoardLens.
+Do not make Linux users install Python just to run rigspec.
 
 ---
 
@@ -837,7 +837,7 @@ Modern means:
 
 # 28. Product Identity
 
-BoardLens should feel like:
+rigspec should feel like:
 
 > A serious open-source hardware inspection tool.
 
@@ -864,7 +864,7 @@ The application should get out of the user's way.
 
 # 29. Definition of Done
 
-BoardLens 2.0 is not finished because the UI looks good.
+rigspec 2.0 is not finished because the UI looks good.
 
 It is finished when:
 
@@ -896,7 +896,7 @@ Then make the interface clean.
 
 # Final Instruction
 
-Start by auditing the existing BoardLens repository.
+Start by auditing the existing rigspec repository.
 
 Do NOT immediately start writing the new UI.
 
@@ -907,7 +907,7 @@ First produce:
 3. Current platform-specific behavior
 4. Current dependencies
 5. Problems with the existing architecture
-6. Proposed BoardLens 2.0 architecture
+6. Proposed rigspec 2.0 architecture
 7. Migration plan
 8. Risks / unknowns
 
@@ -915,4 +915,4 @@ Then wait for the implementation phase or proceed only if explicitly instructed.
 
 The goal is not to make the existing Python app prettier.
 
-The goal is to turn BoardLens into a **proper cross-platform hardware utility with a clean, modular, OS-agnostic architecture.**
+The goal is to turn rigspec into a **proper cross-platform hardware utility with a clean, modular, OS-agnostic architecture.**

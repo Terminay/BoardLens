@@ -1,0 +1,99 @@
+<Application xmlns="https://github.com/avaloniaui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+             x:Class="RigSpec.App.App"
+             RequestedThemeVariant="Dark">
+  <Application.Resources>
+    <ResourceDictionary>
+      <ResourceDictionary.ThemeDictionaries>
+        <ResourceDictionary x:Key="Dark">
+          <SolidColorBrush x:Key="AppBackground" Color="#1E2024"/>
+          <SolidColorBrush x:Key="AppForeground" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="ToolbarBackground" Color="#25272B"/>
+          <SolidColorBrush x:Key="ToolbarBorder" Color="#3E424A"/>
+          <SolidColorBrush x:Key="SidebarBackground" Color="#1E2024"/>
+          <SolidColorBrush x:Key="SidebarBorder" Color="#3E424A"/>
+          <SolidColorBrush x:Key="ContentBackground" Color="#191B1F"/>
+          <SolidColorBrush x:Key="SurfaceBackground" Color="#25272B"/>
+          <SolidColorBrush x:Key="SurfaceBorder" Color="#3E424A"/>
+          <SolidColorBrush x:Key="SectionHeaderBackground" Color="#2C2F35"/>
+          <SolidColorBrush x:Key="StrongForeground" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="MutedForeground" Color="#9AA0A8"/>
+          <SolidColorBrush x:Key="SecondaryForeground" Color="#9AA0A8"/>
+          <SolidColorBrush x:Key="ButtonBackground" Color="#2A2D33"/>
+          <SolidColorBrush x:Key="ButtonForeground" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="ButtonHoverBackground" Color="#3A3D42"/>
+          <SolidColorBrush x:Key="ChartBackground" Color="#1E2024"/>
+          <SolidColorBrush x:Key="ChartBorder" Color="#3E424A"/>
+          <SolidColorBrush x:Key="ChartGrid" Color="#2C2F35"/>
+          <SolidColorBrush x:Key="IconForeground" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="AccentPrimary" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="AccentSecondary" Color="#9AA0A8"/>
+        </ResourceDictionary>
+        <ResourceDictionary x:Key="Light">
+          <SolidColorBrush x:Key="AppBackground" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="AppForeground" Color="#3A3D42"/>
+          <SolidColorBrush x:Key="ToolbarBackground" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="ToolbarBorder" Color="#D5D8DD"/>
+          <SolidColorBrush x:Key="SidebarBackground" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="SidebarBorder" Color="#D5D8DD"/>
+          <SolidColorBrush x:Key="ContentBackground" Color="#F4F5F7"/>
+          <SolidColorBrush x:Key="SurfaceBackground" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="SurfaceBorder" Color="#D5D8DD"/>
+          <SolidColorBrush x:Key="SectionHeaderBackground" Color="#ECEEF1"/>
+          <SolidColorBrush x:Key="StrongForeground" Color="#1E2024"/>
+          <SolidColorBrush x:Key="MutedForeground" Color="#6B7078"/>
+          <SolidColorBrush x:Key="SecondaryForeground" Color="#6B7078"/>
+          <SolidColorBrush x:Key="ButtonBackground" Color="#ECEEF1"/>
+          <SolidColorBrush x:Key="ButtonForeground" Color="#3A3D42"/>
+          <SolidColorBrush x:Key="ButtonHoverBackground" Color="#D5D8DD"/>
+          <SolidColorBrush x:Key="ChartBackground" Color="#FFFFFF"/>
+          <SolidColorBrush x:Key="ChartBorder" Color="#D5D8DD"/>
+          <SolidColorBrush x:Key="ChartGrid" Color="#E7E9ED"/>
+          <SolidColorBrush x:Key="IconForeground" Color="#3A3D42"/>
+          <SolidColorBrush x:Key="AccentPrimary" Color="#3A3D42"/>
+          <SolidColorBrush x:Key="AccentSecondary" Color="#6B7078"/>
+        </ResourceDictionary>
+      </ResourceDictionary.ThemeDictionaries>
+    </ResourceDictionary>
+  </Application.Resources>
+  <Application.Styles>
+    <FluentTheme />
+    <Style Selector="Window">
+      <Setter Property="Background" Value="{DynamicResource AppBackground}"/>
+      <Setter Property="Foreground" Value="{DynamicResource AppForeground}"/>
+      <Setter Property="FontFamily" Value="Segoe UI, Tahoma, Arial"/>
+      <Setter Property="FontSize" Value="13.5"/>
+    </Style>
+    <Style Selector="Button">
+      <Setter Property="Padding" Value="10,6"/>
+      <Setter Property="MinHeight" Value="30"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+      <Setter Property="Foreground" Value="{DynamicResource ButtonForeground}"/>
+    </Style>
+    <Style Selector="Button:pointerover">
+      <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+    </Style>
+    <Style Selector="Button.icon-btn">
+      <Setter Property="Width" Value="34"/>
+      <Setter Property="Height" Value="30"/>
+      <Setter Property="Padding" Value="0"/>
+      <Setter Property="HorizontalContentAlignment" Value="Center"/>
+      <Setter Property="VerticalContentAlignment" Value="Center"/>
+      <Setter Property="CornerRadius" Value="6"/>
+      <Setter Property="Background" Value="{DynamicResource ButtonBackground}"/>
+    </Style>
+    <Style Selector="Button.icon-btn:pointerover">
+      <Setter Property="Background" Value="{DynamicResource ButtonHoverBackground}"/>
+    </Style>
+    <Style Selector="ListBoxItem">
+      <Setter Property="Padding" Value="10,8"/>
+      <Setter Property="Margin" Value="4,2"/>
+      <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+    <Style Selector="TextBox">
+      <Setter Property="FontFamily" Value="Segoe UI, Tahoma, Arial"/>
+      <Setter Property="CornerRadius" Value="6"/>
+    </Style>
+  </Application.Styles>
+</Application>

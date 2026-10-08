@@ -1,0 +1,14 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/RigSpec.App/RigSpec.App.csproj" />
+    <Project Path="src/RigSpec.Cli/RigSpec.Cli.csproj" />
+    <Project Path="src/RigSpec.Core/RigSpec.Core.csproj" />
+    <Project Path="src/RigSpec.Infrastructure/RigSpec.Infrastructure.csproj" />
+    <Project Path="src/RigSpec.Platform.Linux/RigSpec.Platform.Linux.csproj" />
+    <Project Path="src/RigSpec.Platform.MacOS/RigSpec.Platform.MacOS.csproj" />
+    <Project Path="src/RigSpec.Platform.Windows/RigSpec.Platform.Windows.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/RigSpec.Tests/RigSpec.Tests.csproj" />
+  </Folder>
+</Solution>

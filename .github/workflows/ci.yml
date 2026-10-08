@@ -17,11 +17,11 @@ jobs:
         with:
           dotnet-version: "10.0.x"
       - name: Restore
-        run: dotnet restore BoardLens.slnx
+        run: dotnet restore RigSpec.slnx
       - name: Build
-        run: dotnet build BoardLens.slnx -c Release --no-restore
+        run: dotnet build RigSpec.slnx -c Release --no-restore
       - name: Test
-        run: dotnet test BoardLens.slnx -c Release --no-build --verbosity normal
+        run: dotnet test RigSpec.slnx -c Release --no-build --verbosity normal
 
   publish:
     needs: build-test
@@ -42,10 +42,10 @@ jobs:
         with:
           dotnet-version: "10.0.x"
       - name: Publish GUI
-        run: dotnet publish src/BoardLens.App/BoardLens.App.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o artifacts/gui-${{ matrix.rid }}
+        run: dotnet publish src/RigSpec.App/RigSpec.App.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o artifacts/gui-${{ matrix.rid }}
       - name: Publish CLI
-        run: dotnet publish src/BoardLens.Cli/BoardLens.Cli.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o artifacts/cli-${{ matrix.rid }}
+        run: dotnet publish src/RigSpec.Cli/RigSpec.Cli.csproj -c Release -r ${{ matrix.rid }} --self-contained true -o artifacts/cli-${{ matrix.rid }}
       - uses: actions/upload-artifact@v4
         with:
-          name: boardlens-${{ matrix.rid }}
+          name: rigspec-${{ matrix.rid }}
           path: artifacts

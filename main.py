@@ -11,7 +11,7 @@ from pathlib import Path
 
 
 # ============================================================
-# BoardLens v0.5.4
+# RigSpec v0.5.4
 # Windows • macOS • Linux
 # ============================================================
 
@@ -25,8 +25,7 @@ if getattr(sys, "frozen", False):
 else:
     BASE_DIR = Path(__file__).resolve().parent
 
-WINDOWS_ICON = BASE_DIR / "boardlens.ico"
-MACOS_ICON = BASE_DIR / "BoardLens.icns"
+WINDOWS_ICON = BASE_DIR / "assets" / "rigspec-kit-favicon.ico"
 
 
 # ------------------------------------------------------------
@@ -958,7 +957,7 @@ def detect_hardware():
 
 window = tk.Tk()
 
-window.title("BoardLens")
+window.title("rigspec")
 
 window.geometry("650x650")
 
@@ -985,14 +984,14 @@ if platform.system() == "Windows":
 # Colors
 # ------------------------------------------------------------
 
-BG = "#0f172a"
-CARD = "#111827"
-CARD_ALT = "#172033"
-ACCENT = "#22d3ee"
-TEXT = "#f8fafc"
-MUTED = "#94a3b8"
-SUCCESS = "#22c55e"
-WARNING = "#f59e0b"
+BG = "#1E2024"
+CARD = "#25272B"
+CARD_ALT = "#2C2F35"
+ACCENT = "#9AA0A8"
+TEXT = "#F4F5F7"
+MUTED = "#9AA0A8"
+SUCCESS = "#9AA0A8"
+WARNING = "#6B7078"
 
 
 window.configure(
@@ -1018,7 +1017,7 @@ header.pack(
 
 title = tk.Label(
     header,
-    text="BoardLens",
+    text="rigspec",
     font=("TkDefaultFont", 24, "bold"),
     fg=TEXT,
     bg=BG
@@ -1385,7 +1384,7 @@ scan_button.pack(
 
 footer = tk.Label(
     window,
-    text="BoardLens v0.5.4 • Windows + macOS + Linux",
+    text="rigspec v0.5.4 • Windows + macOS + Linux",
     font=("TkDefaultFont", 8),
     fg=MUTED,
     bg=BG
