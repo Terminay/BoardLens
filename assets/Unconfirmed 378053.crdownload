@@ -1,0 +1,7 @@
+<!-- Paste at the top of your README.md -->
+<p align="center">
+  <picture>
+    <source media="(prefers-color-scheme: dark)" srcset="assets/readme-banner-dark.svg">
+    <img alt="rigspec" src="assets/readme-banner-light.svg" width="880">
+  </picture>
+</p>

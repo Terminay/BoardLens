@@ -1,0 +1,14 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <RootNamespace>BoardLens.Infrastructure</RootNamespace>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging.Abstractions" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoardLens.Core\BoardLens.Core.csproj" />
+    <ProjectReference Include="..\BoardLens.Platform.Windows\BoardLens.Platform.Windows.csproj" />
+    <ProjectReference Include="..\BoardLens.Platform.Linux\BoardLens.Platform.Linux.csproj" />
+    <ProjectReference Include="..\BoardLens.Platform.MacOS\BoardLens.Platform.MacOS.csproj" />
+  </ItemGroup>
+</Project>

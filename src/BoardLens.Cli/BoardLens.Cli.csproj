@@ -1,0 +1,15 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+  <PropertyGroup>
+    <OutputType>Exe</OutputType>
+    <RootNamespace>BoardLens.Cli</RootNamespace>
+    <AssemblyName>boardlens</AssemblyName>
+  </PropertyGroup>
+  <ItemGroup>
+    <PackageReference Include="Microsoft.Extensions.Logging" Version="10.0.0" />
+    <PackageReference Include="Microsoft.Extensions.Logging.Console" Version="10.0.0" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\BoardLens.Core\BoardLens.Core.csproj" />
+    <ProjectReference Include="..\BoardLens.Infrastructure\BoardLens.Infrastructure.csproj" />
+  </ItemGroup>
+</Project>

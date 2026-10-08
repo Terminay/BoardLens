@@ -1,0 +1,196 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:BoardLens.App.ViewModels"
+        x:Class="BoardLens.App.Views.MainWindow"
+        x:DataType="vm:MainViewModel"
+        Title="BoardLens"
+        Icon="/Assets/boardlens.ico"
+        Width="960" Height="660"
+        MinWidth="720" MinHeight="480"
+        FontSize="{Binding UiFontSize}">
+  <DockPanel>
+    <!-- Top Toolbar -->
+    <Border DockPanel.Dock="Top" Background="{DynamicResource ToolbarBackground}" Padding="14,10" BorderBrush="{DynamicResource ToolbarBorder}" BorderThickness="0,0,0,1">
+      <Grid ColumnDefinitions="*,Auto">
+        <StackPanel Orientation="Horizontal" Spacing="12" VerticalAlignment="Center">
+          <TextBlock Text="BoardLens" FontWeight="Bold" FontSize="15" VerticalAlignment="Center" Foreground="{DynamicResource StrongForeground}"/>
+          <Border Width="1" Height="14" Background="{DynamicResource ToolbarBorder}"/>
+          <TextBlock Text="Hardware Inspection" Opacity="0.65" FontSize="12.5" VerticalAlignment="Center"/>
+        </StackPanel>
+        
+        <!-- Action Buttons (Google Material Icons) -->
+        <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="6" VerticalAlignment="Center">
+          <!-- Zoom Controls -->
+          <Button Classes="icon-btn" Command="{Binding DecreaseFontSizeCommand}" ToolTip.Tip="Zoom Out (Ctrl -)">
+            <PathIcon Width="14" Height="14" Data="M19 13H5v-2h14v2z" Foreground="{DynamicResource IconForeground}"/>
+          </Button>
+          <Button Classes="icon-btn" Command="{Binding IncreaseFontSizeCommand}" ToolTip.Tip="Zoom In (Ctrl +)">
+            <PathIcon Width="14" Height="14" Data="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z" Foreground="{DynamicResource IconForeground}"/>
+          </Button>
+          
+          <Border Width="1" Height="18" Margin="3,0" Background="{DynamicResource ToolbarBorder}"/>
+
+          <!-- Refresh -->
+          <Button Classes="icon-btn" Command="{Binding RefreshCommand}" IsEnabled="{Binding !IsBusy}" ToolTip.Tip="Refresh Hardware (F5)">
+            <PathIcon Width="15" Height="15" Data="M17.65 6.35A7.958 7.958 0 0012 4c-4.42 0-7.99 3.58-7.99 8s3.57 8 7.99 8c3.73 0 6.84-2.55 7.73-6h-2.08A5.99 5.99 0 0112 18c-3.31 0-6-2.69-6-6s2.69-6 6-6c1.66 0 3.14.69 4.22 1.78L13 11h7V4l-2.35 2.35z" Foreground="#58A6FF"/>
+          </Button>
+          
+          <!-- Copy All -->
+          <Button Classes="icon-btn" Command="{Binding CopyAllCommand}" ToolTip.Tip="Copy Full Report (Ctrl+C)">
+            <PathIcon Width="15" Height="15" Data="M16 1H4c-1.1 0-2 .9-2 2v14h2V3h12V1zm3 4H8c-1.1 0-2 .9-2 2v14c0 1.1.9 2 2 2h11c1.1 0 2-.9 2-2V7c0-1.1-.9-2-2-2zm0 16H8V7h11v14z" Foreground="{DynamicResource IconForeground}"/>
+          </Button>
+          
+          <!-- Export -->
+          <Button Classes="icon-btn" Command="{Binding ExportJsonCommand}" ToolTip.Tip="Export to File (Ctrl+S)">
+            <PathIcon Width="15" Height="15" Data="M19 12v7H5v-7H3v7c0 1.1.9 2 2 2h14c1.1 0 2-.9 2-2v-7h-2zm-6 .67l2.59-2.58L17 11.5l-5 5-5-5 1.41-1.41L11 12.67V3h2v9.67z" Foreground="{DynamicResource IconForeground}"/>
+          </Button>
+        </StackPanel>
+      </Grid>
+    </Border>
+
+
+    <!-- Left Navigation Sidebar -->
+    <Border DockPanel.Dock="Left" Width="170" Background="{DynamicResource SidebarBackground}" BorderBrush="{DynamicResource SidebarBorder}" BorderThickness="0,0,1,0" Padding="6,10">
+      <ListBox ItemsSource="{Binding NavItems}" SelectedItem="{Binding SelectedNav}" Background="Transparent">
+        <ListBox.ItemTemplate>
+          <DataTemplate>
+            <TextBlock Text="{Binding}" FontWeight="Normal" VerticalAlignment="Center"/>
+          </DataTemplate>
+        </ListBox.ItemTemplate>
+      </ListBox>
+    </Border>
+
+    <!-- Main Content Panel -->
+    <ScrollViewer Background="{DynamicResource ContentBackground}" Padding="16,14">
+      <Panel>
+        <!-- Standard Sections View (Overview, Hardware, Diagnostics, About) -->
+        <ItemsControl ItemsSource="{Binding Sections}" IsVisible="{Binding IsSectionsView}">
+          <ItemsControl.ItemTemplate>
+            <DataTemplate x:DataType="vm:SectionViewModel">
+              <Border Margin="0,0,0,12" CornerRadius="8" ClipToBounds="True" BorderBrush="{DynamicResource SurfaceBorder}" BorderThickness="1" Background="{DynamicResource SurfaceBackground}">
+                <DockPanel>
+                  <!-- Collapsible Card Header -->
+                  <Button DockPanel.Dock="Top" Background="{DynamicResource SectionHeaderBackground}" Padding="12,8" Command="{Binding ToggleExpandCommand}"
+                          HorizontalAlignment="Stretch" HorizontalContentAlignment="Stretch" CornerRadius="0">
+                    <Grid ColumnDefinitions="*,Auto">
+                      <TextBlock Grid.Column="0" Text="{Binding Title}" FontWeight="SemiBold" VerticalAlignment="Center" Foreground="{DynamicResource StrongForeground}"/>
+                      <PathIcon Grid.Column="1" Width="13" Height="13" Foreground="{DynamicResource SecondaryForeground}"
+                                Data="M7.41 8.59L12 13.17l4.59-4.58L18 10l-6 6-6-6 1.41-1.41z"/>
+                    </Grid>
+                  </Button>
+                  
+                  <!-- Card Rows Body -->
+                  <ItemsControl ItemsSource="{Binding Rows}" IsVisible="{Binding IsExpanded}" Margin="0,4,0,6">
+                    <ItemsControl.ItemTemplate>
+                      <DataTemplate x:DataType="vm:PropertyRow">
+                        <Grid ColumnDefinitions="210,*" MinHeight="26" Margin="0,1">
+                          <TextBlock Grid.Column="0" Text="{Binding Key}" Margin="12,4" Foreground="{DynamicResource SecondaryForeground}"/>
+                          <SelectableTextBlock Grid.Column="1" Text="{Binding Value}" Margin="12,4" TextWrapping="Wrap" Foreground="{DynamicResource AppForeground}"/>
+                        </Grid>
+                      </DataTemplate>
+                    </ItemsControl.ItemTemplate>
+                  </ItemsControl>
+                </DockPanel>
+              </Border>
+            </DataTemplate>
+          </ItemsControl.ItemTemplate>
+        </ItemsControl>
+
+        <!-- Performance / Live Graphs View -->
+        <StackPanel IsVisible="{Binding IsPerformanceView}" Spacing="16">
+          <!-- CPU Live Utilization -->
+          <Border CornerRadius="8" ClipToBounds="True" BorderBrush="{DynamicResource SurfaceBorder}" BorderThickness="1" Background="{DynamicResource SurfaceBackground}" Padding="14">
+            <StackPanel Spacing="10">
+              <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <TextBlock Text="CPU Utilization" FontWeight="SemiBold" FontSize="14.5" Foreground="{DynamicResource StrongForeground}"/>
+                  <TextBlock Text="(Live 30s Telemetry)" Opacity="0.5" VerticalAlignment="Center" FontSize="12"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="{Binding CpuUsageText}" FontWeight="Bold" FontSize="15" Foreground="#58A6FF"/>
+              </Grid>
+              
+              <!-- Sparkline Line Graph -->
+              <Border Background="{DynamicResource ChartBackground}" CornerRadius="6" BorderBrush="{DynamicResource ChartBorder}" BorderThickness="1" Height="100" Padding="8">
+                <Panel>
+                  <!-- Background Grid Lines -->
+                  <Border BorderBrush="{DynamicResource ChartGrid}" BorderThickness="0,1,0,1" Margin="0,25" Opacity="0.6"/>
+                  <!-- Polyline Graph -->
+                  <Viewbox Stretch="Fill">
+                    <Polyline Points="{Binding CpuPoints}" Stroke="#58A6FF" StrokeThickness="2.5"/>
+                  </Viewbox>
+                </Panel>
+              </Border>
+            </StackPanel>
+          </Border>
+
+          <!-- Memory Live Allocation -->
+          <Border CornerRadius="8" ClipToBounds="True" BorderBrush="{DynamicResource SurfaceBorder}" BorderThickness="1" Background="{DynamicResource SurfaceBackground}" Padding="14">
+            <StackPanel Spacing="10">
+              <Grid ColumnDefinitions="*,Auto">
+                <StackPanel Orientation="Horizontal" Spacing="8">
+                  <TextBlock Text="Memory Allocation" FontWeight="SemiBold" FontSize="14.5" Foreground="{DynamicResource StrongForeground}"/>
+                  <TextBlock Text="(Live 30s Telemetry)" Opacity="0.5" VerticalAlignment="Center" FontSize="12"/>
+                </StackPanel>
+                <TextBlock Grid.Column="1" Text="{Binding MemoryUsageText}" FontWeight="Bold" FontSize="15" Foreground="#4EC9B0"/>
+              </Grid>
+              
+              <!-- Sparkline Line Graph -->
+              <Border Background="{DynamicResource ChartBackground}" CornerRadius="6" BorderBrush="{DynamicResource ChartBorder}" BorderThickness="1" Height="100" Padding="8">
+                <Panel>
+                  <!-- Background Grid Lines -->
+                  <Border BorderBrush="{DynamicResource ChartGrid}" BorderThickness="0,1,0,1" Margin="0,25" Opacity="0.6"/>
+                  <!-- Polyline Graph -->
+                  <Viewbox Stretch="Fill">
+                    <Polyline Points="{Binding MemoryPoints}" Stroke="#4EC9B0" StrokeThickness="2.5"/>
+                  </Viewbox>
+                </Panel>
+              </Border>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+
+        <!-- Settings View -->
+        <StackPanel IsVisible="{Binding IsSettingsView}" Spacing="16">
+          <Border CornerRadius="8" ClipToBounds="True" BorderBrush="{DynamicResource SurfaceBorder}" BorderThickness="1" Background="{DynamicResource SurfaceBackground}" Padding="16">
+            <StackPanel Spacing="14">
+              <TextBlock Text="Appearance &amp; Display" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource StrongForeground}"/>
+              
+              <Grid ColumnDefinitions="220,*" MinHeight="32">
+                <TextBlock Grid.Column="0" Text="Theme Variant" VerticalAlignment="Center" Foreground="{DynamicResource MutedForeground}"/>
+                <CheckBox Grid.Column="1" Content="Dark Theme" IsChecked="{Binding IsDarkTheme}" VerticalAlignment="Center"/>
+              </Grid>
+
+              <Grid ColumnDefinitions="220,*" MinHeight="32">
+                <TextBlock Grid.Column="0" Text="Interface Font Size" VerticalAlignment="Center" Foreground="{DynamicResource MutedForeground}"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="8" VerticalAlignment="Center">
+                  <Button Classes="icon-btn" Command="{Binding DecreaseFontSizeCommand}">
+                    <PathIcon Width="12" Height="12" Data="M19 13H5v-2h14v2z"/>
+                  </Button>
+                  <TextBlock Text="{Binding UiFontSize, StringFormat='{}{0:0.0} pt'}" VerticalAlignment="Center" Width="60" TextAlignment="Center"/>
+                  <Button Classes="icon-btn" Command="{Binding IncreaseFontSizeCommand}">
+                    <PathIcon Width="12" Height="12" Data="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                  </Button>
+                  <Button Content="Reset (Ctrl 0)" Command="{Binding ResetFontSizeCommand}" Margin="8,0,0,0" Padding="8,4" FontSize="11.5"/>
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Border>
+
+          <Border CornerRadius="8" ClipToBounds="True" BorderBrush="{DynamicResource SurfaceBorder}" BorderThickness="1" Background="{DynamicResource SurfaceBackground}" Padding="16">
+            <StackPanel Spacing="14">
+              <TextBlock Text="Data &amp; Export" FontWeight="SemiBold" FontSize="15" Foreground="{DynamicResource StrongForeground}"/>
+              
+              <Grid ColumnDefinitions="220,*" MinHeight="32">
+                <TextBlock Grid.Column="0" Text="Default Export Format" VerticalAlignment="Center" Foreground="{DynamicResource MutedForeground}"/>
+                <StackPanel Grid.Column="1" Orientation="Horizontal" Spacing="16" VerticalAlignment="Center">
+                  <RadioButton Content="JSON" GroupName="ExportFmt" IsChecked="{Binding DefaultExportFormat, ConverterParameter='JSON'}" VerticalAlignment="Center"/>
+                  <RadioButton Content="Plain Text" GroupName="ExportFmt" IsChecked="{Binding DefaultExportFormat, ConverterParameter='Text'}" VerticalAlignment="Center"/>
+                </StackPanel>
+              </Grid>
+            </StackPanel>
+          </Border>
+        </StackPanel>
+      </Panel>
+    </ScrollViewer>
+  </DockPanel>
+</Window>
