@@ -1,0 +1,56 @@
+name: Bug report
+description: Report a reproducible problem with rigspec.
+title: "[Bug]: "
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Before submitting, check for an existing report. Do not attach a full hardware export or include serial numbers, MAC addresses, or other private identifiers.
+  - type: input
+    id: version
+    attributes:
+      label: rigspec version or commit
+      placeholder: "2.0.0 or commit SHA"
+    validations:
+      required: true
+  - type: dropdown
+    id: operating-system
+    attributes:
+      label: Operating system
+      options:
+        - Windows
+        - macOS
+        - Linux
+        - Other
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the problem and include sanitized error output if relevant.
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Steps to reproduce
+      placeholder: |
+        1. Launch rigspec...
+        2. Select...
+        3. Observe...
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: What did you expect to happen?
+    validations:
+      required: true
+  - type: textarea
+    id: logs
+    attributes:
+      label: Relevant logs (optional)
+      description: Remove personal or hardware identifiers before posting.
+    validations:
+      required: false

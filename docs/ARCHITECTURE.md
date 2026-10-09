@@ -29,7 +29,3 @@ A failed GPU query does not block CPU, memory, or other sections.
 ## Privacy
 
 Detection is offline. There is no telemetry, analytics, or automatic network use.
-
-## Python app
-
-`main.py` remains until the .NET app has feature parity in a release. It is the functional reference, not the architecture to copy.

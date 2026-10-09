@@ -1,19 +1,40 @@
-__pycache__/
-*.py[cod]
-.venv/
-venv/
-env/
-build/
-dist/
-*.spec
-.DS_Store
-Thumbs.db
-.vscode/
-.idea/
-bin/
-obj/
+# .NET build and test output
+[Bb]in/
+[Oo]bj/
 .vs/
+TestResults/
+artifacts/
+publish/
 *.user
 *.suo
 *.userosscache
-artifacts/
+*.sln.docstates
+*.trx
+*.coverage
+*.coveragexml
+
+# Packaged application output
+*.exe
+*.msi
+*.dmg
+*.app/
+*.AppImage
+*.deb
+*.rpm
+
+# IDE settings
+.idea/
+.vscode/
+
+# Operating-system and temporary files
+.DS_Store
+Thumbs.db
+desktop.ini
+*.crdownload
+*.tmp
+*.log
+
+# Local environment and secrets
+.env
+.env.*
+!.env.example
