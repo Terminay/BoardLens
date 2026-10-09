@@ -21,6 +21,14 @@ A local-first, cross-platform hardware inspection tool for Windows, macOS, and L
 
 rigspec is a C# / .NET / Avalonia desktop application. The GUI and CLI share the same hardware service layer. Hardware detection does not require Python, network access, or telemetry.
 
+**Downloads**
+
+[![Windows x64](https://img.shields.io/badge/Windows_x64-nightly-6B7078?style=flat&logo=windows&logoColor=white&labelColor=3A3D42)](https://nightly.link/Terminay/rigspec/workflows/ci/main/rigspec-win-x64.zip)
+
+[![Linux x64](https://img.shields.io/badge/Linux_x64-nightly-6B7078?style=flat&logo=linux&logoColor=white&labelColor=3A3D42)](https://nightly.link/Terminay/rigspec/workflows/ci/main/rigspec-linux-x64.zip)
+
+[![macOS x64](https://img.shields.io/badge/macOS_x64-nightly-6B7078?style=flat&logo=apple&logoColor=white&labelColor=3A3D42)](https://nightly.link/Terminay/rigspec/workflows/ci/main/rigspec-osx-x64.zip)
+
 ## What it reports
 
 Operating system, CPU, memory, motherboard, BIOS, GPU, storage, network adapters, and displays. Fields the OS does not expose are marked unavailable rather than guessed.
