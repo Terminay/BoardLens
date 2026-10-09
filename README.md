@@ -1,9 +1,5 @@
 <div align="center">
-  <picture>
-    <source media="(prefers-color-scheme: dark)" srcset="assets/rigspec-kit-svg-logo-stacked-mono-white.svg">
-    <source media="(prefers-color-scheme: light)" srcset="assets/rigspec-kit-svg-logo-stacked-mono-black.svg">
-    <img alt="Project Banner" src="assets/rigspec-kit-svg-logo-stacked-mono-black.svg" width="30%">
-  </picture>
+  <img alt="Project Banner" src="assets/rigspec-kit-svg-logo-stacked-mono-white.svg" width="50%">
   
   <p align="center">
     <img src="assets/badges/platforms.svg" alt="platforms">
