@@ -1,5 +1,5 @@
 <div align="center">
-  <img alt="Project Banner" src="assets/rigspec-kit-svg-logo-stacked-mono-white.svg" width="50%">
+  <img alt="Project Banner" src="assets/rigspec-kit-svg-logo-stacked-mono-white.svg" width="400">
   
   <p align="center">
     <img src="assets/badges/platforms.svg" alt="platforms">
